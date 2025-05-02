@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct WeatherMainView: View {
-    var currentWeather = "rainy" // Change the wheater
+    var currentWeather = "sunny" // Change the wheater
 
     // Type of wheater
     var backgroundGradient: [Color] {
@@ -87,17 +87,66 @@ struct WeatherMainView: View {
                     print("View Details tapped!")
                 }) {
                     Label("View Details", systemImage: "arrow.right")
-                        .padding()                   .background(Color.white.opacity(0.3))
+                        .padding()
                         .foregroundColor(.white)
                         .cornerRadius(10)
                 }
 
                 Spacer()
+                WeatherDetailView()
             }
             .padding()
         }
     }
 }
+
+// The weather in the next 7 days
+struct WeatherDetailView: View {
+    var body: some View {
+        VStack(alignment: .center) {
+                    Text("Hourly Forecast")
+                        .font(.title2)
+                        .bold()
+                        .foregroundColor(.white)
+                        .padding(.bottom)
+
+                    ScrollView(.horizontal, showsIndicators: false) {
+                        HStack(spacing: 20) {
+                            ForEach(0..<7) { index in
+                                VStack(spacing: 10) {
+                                    Text(hours[index])
+                                        .font(.headline)
+                                        .foregroundColor(.white)
+
+                                    Image(systemName: icons[index])
+                                        .foregroundColor(.yellow)
+                                        .font(.title)
+
+                                    Text("\(temperatures[index])°")
+                                        .font(.headline)
+                                        .foregroundColor(.white)
+                                }
+                                .padding()
+                                
+                                .cornerRadius(12)
+                            }
+                        }
+                        .padding(.horizontal)
+                    }
+                    .padding(.bottom)
+
+                    Spacer()
+                }
+                .padding()
+            }
+
+            let hours = ["Now", "12 P.M.", "1 P.M.", "2 P.M.", "3 P.M.", "4 P.M.", "5 P.M."]
+            let icons = ["sun.max.fill", "sun.max.fill", "cloud.sun.fill", "cloud.fill", "cloud.fill", "cloud.rain.fill", "cloud.bolt.rain.fill"]
+            let temperatures = [25, 26, 27, 28, 28, 27, 26]
+        
+    }
+
+
 
 #Preview {
     WeatherMainView()
