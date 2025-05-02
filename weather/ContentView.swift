@@ -100,7 +100,7 @@ struct WeatherMainView: View {
     }
 }
 
-// The weather in the next 7 hours 
+// The weather in the next 7 hours
 struct WeatherDetailView: View {
     var body: some View {
         VStack(alignment: .center) {
