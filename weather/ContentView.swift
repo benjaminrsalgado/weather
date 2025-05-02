@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct WeatherMainView: View {
-    var currentWeather = "night" // Change the wheater
+    var currentWeather = "sunny" // Change the wheater
 
     // Type of wheater
     var backgroundGradient: [Color] {
@@ -119,8 +119,7 @@ struct WeatherDetailView: View {
                                         .foregroundColor(.white)
 
                                     Image(systemName: icons[index])
-                                        .foregroundColor(.yellow)
-                                        .font(.title)
+                                        .renderingMode(.original)                                      .font(.title)
 
                                     Text("\(temperatures[index])°")
                                         .font(.headline)
