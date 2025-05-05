@@ -91,7 +91,8 @@ struct WeatherMainView: View {
                         .foregroundColor(.white)
                         .cornerRadius(10)
                 }
-
+         
+             
                 Spacer()
                 WeatherDetailView()
             }
@@ -109,12 +110,12 @@ struct WeatherDetailView: View {
                         .bold()
                         .foregroundColor(.white)
                         .padding(.bottom)
-
+// hours,icons and temperatures we extract the value from the arrays that are in the bottom
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack(spacing: 20) {
                             ForEach(0..<7) { index in
                                 VStack(spacing: 10) {
-                                    Text(hours[index])
+                                    Text(hours[index])// we said index becasue we are in the loop 0 < 7 se the index means that we each since 0 to 7
                                         .font(.headline)
                                         .foregroundColor(.white)
 
@@ -138,13 +139,64 @@ struct WeatherDetailView: View {
                 }
                 .padding()
             }
-
+// This are the arrays that we using in the top
             let hours = ["Now", "12 P.M.", "1 P.M.", "2 P.M.", "3 P.M.", "4 P.M.", "5 P.M."]
             let icons = ["sun.max.fill", "sun.max.fill", "cloud.sun.fill", "cloud.fill", "cloud.fill", "cloud.rain.fill", "cloud.bolt.rain.fill"]
             let temperatures = [25, 26, 27, 28, 28, 27, 26]
-        
+
     }
 
+
+//Esto es NUEVO
+struct ForecastDay: Identifiable {
+    let id = UUID()
+    let day: String
+    let icon: String
+    let maxTemp: Int
+    let minTemp: Int
+}
+
+let weeklyForecast = [
+    ForecastDay(day: "Monday", icon: "sun.max.fill", maxTemp: 25, minTemp: 15),
+    ForecastDay(day: "Tuesday", icon: "cloud.rain.fill", maxTemp: 21, minTemp: 13),
+    ForecastDay(day: "Wednesday", icon: "cloud.sun.fill", maxTemp: 23, minTemp: 14),
+    ForecastDay(day: "Thursday", icon: "cloud.fill", maxTemp: 22, minTemp: 12),
+    ForecastDay(day: "Friday", icon: "cloud.bolt.rain.fill", maxTemp: 19, minTemp: 11),
+    ForecastDay(day: "Saturday", icon: "sun.max.fill", maxTemp: 27, minTemp: 16),
+    ForecastDay(day: "Sunday", icon: "cloud.sun.fill", maxTemp: 24, minTemp: 14)
+]
+
+struct WeeklyForecastView: View {
+    var body: some View {
+        VStack(alignment: .leading, spacing: 12) {
+            Text("7-Day Forecast")
+                .font(.title2)
+                .bold()
+                .foregroundColor(.white)
+
+            ForEach(weeklyForecast) { day in
+                HStack {
+                    Text(day.day)
+                        .frame(width: 100, alignment: .leading)
+                        .foregroundColor(.white)
+
+                    Image(systemName: day.icon)
+                        .renderingMode(.original)
+
+                    Spacer()
+
+                    Text("\(day.maxTemp)° / \(day.minTemp)°")
+                        .foregroundColor(.white)
+                }
+                .padding(.horizontal)
+                .padding(.vertical, 8)
+                .background(Color.white.opacity(0.1))
+                .cornerRadius(12)
+            }
+        }
+        .padding(.top)
+    }
+}
 
 
 #Preview {
