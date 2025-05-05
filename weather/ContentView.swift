@@ -57,7 +57,6 @@ struct WeatherMainView: View {
             return .white
         }
     }
-
     var body: some View {
         ZStack {
             // Dynamic background
@@ -67,36 +66,38 @@ struct WeatherMainView: View {
                 endPoint: .bottom
             )
             .ignoresSafeArea()
-// The main text
-            VStack(spacing: 16) {
-                Text("Swift City")
-                    .font(.largeTitle)
-                    .bold()
-                    .foregroundColor(.white)
-
-                Text("25°")
-                    .font(.system(size: 80))
-                    .bold()
-                    .foregroundColor(.white)
-                //SF Symbols with the color
-                Image(systemName: weatherIcon)
-                    .font(.system(size: 50))
-                    .foregroundColor(iconColor)
-// The first button
-                Button(action: {
-                    print("View Details tapped!")
-                }) {
-                    Label("View Details", systemImage: "arrow.right")
-                        .padding()
+//This is the scroll that will scroll all the elements small boxes(text and icons) and box boxes (7 hours and 7 days)
+            ScrollView(.vertical, showsIndicators: false) {
+                VStack(spacing: 16) {
+                    Text("Swift City")
+                        .font(.largeTitle)
+                        .bold()
                         .foregroundColor(.white)
-                        .cornerRadius(10)
+
+                    Text("25°")
+                        .font(.system(size: 80))
+                        .bold()
+                        .foregroundColor(.white)
+
+                    Image(systemName: weatherIcon)
+                        .font(.system(size: 50))
+                        .foregroundColor(iconColor)
+
+                    Button(action: {
+                        print("View Details tapped!")
+                    }) {
+                        Label("View Details", systemImage: "arrow.right")
+                            .padding()
+                            .foregroundColor(.white)
+                            .cornerRadius(10)
+                    }
+//This are the views of the next 7 days and 7 hours
+                    WeatherDetailView()
+                    WeeklyForecastView()
+                    Spacer(minLength: 20) // espacio opcional al final
                 }
-         
-             
-                Spacer()
-                WeatherDetailView()
+                .padding()
             }
-            .padding()
         }
     }
 }
@@ -125,6 +126,7 @@ struct WeatherDetailView: View {
                                     Text("\(temperatures[index])°")
                                         .font(.headline)
                                         .foregroundColor(.white)
+                                    
                                 }
                                 .padding()
                                 
@@ -133,11 +135,11 @@ struct WeatherDetailView: View {
                         }
                         .padding(.horizontal)
                     }
-                    .padding(.bottom)
+                  
 
                     Spacer()
                 }
-                .padding()
+              
             }
 // This are the arrays that we using in the top
             let hours = ["Now", "12 P.M.", "1 P.M.", "2 P.M.", "3 P.M.", "4 P.M.", "5 P.M."]
@@ -146,8 +148,7 @@ struct WeatherDetailView: View {
 
     }
 
-
-//Esto es NUEVO
+//Struct of the next 7 days
 struct ForecastDay: Identifiable {
     let id = UUID()
     let day: String
@@ -155,7 +156,6 @@ struct ForecastDay: Identifiable {
     let maxTemp: Int
     let minTemp: Int
 }
-
 let weeklyForecast = [
     ForecastDay(day: "Monday", icon: "sun.max.fill", maxTemp: 25, minTemp: 15),
     ForecastDay(day: "Tuesday", icon: "cloud.rain.fill", maxTemp: 21, minTemp: 13),
@@ -165,11 +165,10 @@ let weeklyForecast = [
     ForecastDay(day: "Saturday", icon: "sun.max.fill", maxTemp: 27, minTemp: 16),
     ForecastDay(day: "Sunday", icon: "cloud.sun.fill", maxTemp: 24, minTemp: 14)
 ]
-
 struct WeeklyForecastView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
-            Text("7-Day Forecast")
+            Text("7 Day Forecast")
                 .font(.title2)
                 .bold()
                 .foregroundColor(.white)
@@ -177,26 +176,30 @@ struct WeeklyForecastView: View {
             ForEach(weeklyForecast) { day in
                 HStack {
                     Text(day.day)
-                        .frame(width: 100, alignment: .leading)
+                        .frame(width: 200, alignment: .leading)
                         .foregroundColor(.white)
+                        .font(.headline)
 
                     Image(systemName: day.icon)
                         .renderingMode(.original)
+                        .font(.headline)
 
                     Spacer()
 
                     Text("\(day.maxTemp)° / \(day.minTemp)°")
                         .foregroundColor(.white)
+                        .font(.headline)
                 }
                 .padding(.horizontal)
-                .padding(.vertical, 8)
-                .background(Color.white.opacity(0.1))
+                .padding(.vertical, 10)
+                .background(Color.white.opacity(0.0))
                 .cornerRadius(12)
             }
         }
         .padding(.top)
     }
 }
+
 
 
 #Preview {
