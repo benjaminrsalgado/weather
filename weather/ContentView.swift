@@ -258,6 +258,9 @@ struct WindMapView: View {
           
         }
         .padding()
+        .background(Color.white.opacity(0.0))
+        .cornerRadius(20)
+
     }
 }
 
