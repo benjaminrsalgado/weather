@@ -91,10 +91,12 @@ struct WeatherMainView: View {
                             .foregroundColor(.white)
                             .cornerRadius(10)
                     }
-//This are the views of the next 7 days and 7 hours
+//This are the views of the next 7 days and 7 hours and the air quality
                     WeatherDetailView()
                     WeeklyForecastView()
-                    Spacer(minLength: 20) // espacio opcional al final
+                    AirQualityView()
+                    WindMapView()
+                    Spacer(minLength: 20)
                 }
                 .padding()
             }
@@ -172,7 +174,7 @@ struct WeeklyForecastView: View {
                 .font(.title2)
                 .bold()
                 .foregroundColor(.white)
-
+//this are the array of the weeklyForecast and apper one by one( day, icon, maxtemp, mintemp)
             ForEach(weeklyForecast) { day in
                 HStack {
                     Text(day.day)
@@ -200,7 +202,64 @@ struct WeeklyForecastView: View {
     }
 }
 
+//This is the air quality
+struct AirQualityView: View {
+    var body: some View {
+        VStack(alignment: .leading, spacing: 12) {
+            Text("AIR QUALITY")
+                .font(.caption)
+                .foregroundColor(.white.opacity(0.7))
+                .textCase(.uppercase)
+                .padding(.top)
+            Text("Acceptable")
+                .font(.title2)
+                .bold()
+                .foregroundColor(.white)
+// This is the linea
+            ZStack(alignment: .leading) {
+                LinearGradient(
+                    gradient: Gradient(colors: [.green, .yellow, .orange, .red, .purple]),
+                    startPoint: .leading,
+                    endPoint: .trailing
+                )
+                .frame(height: 5.9)
+                .cornerRadius(6)
 
+            //This is the circle of the line
+                Circle()
+                    .fill(Color.white)
+                    .frame(width: 12, height: 12)
+                    .offset(x: 50)
+            }
+
+            Text("Air quality is better than yesterday at about this time.")
+                .font(.subheadline)
+                .foregroundColor(.white)
+        }
+        .padding()
+        .background(Color.white.opacity(0.0))
+        .cornerRadius(20)
+    }
+}
+
+//This is wind map image
+struct WindMapView: View {
+    var body: some View {
+        VStack(alignment: .leading, spacing: 12) {
+            Text("WIND MAP")
+                .font(.subheadline)
+                .foregroundColor(.white.opacity(0.7))
+                .textCase(.uppercase)
+            Image("Air")
+                .resizable()
+                .scaledToFit()
+                .cornerRadius(40)
+
+          
+        }
+        .padding()
+    }
+}
 
 #Preview {
     WeatherMainView()
