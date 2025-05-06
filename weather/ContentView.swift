@@ -96,7 +96,8 @@ struct WeatherMainView: View {
                     WeeklyForecastView()
                     AirQualityView()
                     WindMapView()
-                    Spacer(minLength: 20)
+                    InfoCardsGridView()
+                   Spacer(minLength: 20)
                 }
                 .padding()
             }
@@ -263,6 +264,95 @@ struct WindMapView: View {
 
     }
 }
+
+//Structs in horizontal way feelsLikeCard and UVIndexCard
+struct InfoCardsGridView: View {
+    var body: some View {
+        HStack(alignment: .top, spacing: 40) {
+                FeelsLikeCard()
+                UVIndexCard()
+              
+            }
+            .padding()
+    }
+}
+
+//Struct of the FeelsLikeCard
+struct FeelsLikeCard: View {
+    var body: some View {
+        VStack(alignment: .leading, spacing: 16) {
+            Text("FEELS LIKE")
+                .font(.caption)
+                .foregroundColor(.white)
+                .textCase(.uppercase)
+             
+
+            Text("28°")
+                .font(.title)
+                .bold()
+                .foregroundColor(.white)
+              
+            
+            Text("Similar to the actual temperature.")
+                .font(.subheadline)
+                .foregroundColor(.white)
+                .multilineTextAlignment(.leading)
+                .lineLimit(nil)
+        }
+        .padding()
+        .background(Color.white.opacity(0.0))
+        .cornerRadius(16)
+     
+    }
+       
+}
+
+//Struct of the UVIndexCard
+struct UVIndexCard: View {
+    var body: some View {
+        VStack(alignment: .leading, spacing: 9) {
+            Text("UV INDEX")
+                .font(.caption)
+                .foregroundColor(.white)
+                .textCase(.uppercase)
+                
+            Text("6")
+                .font(.title)
+                .bold()
+                .foregroundColor(.white)
+          
+
+            Text("High")
+                .font(.subheadline)
+                .foregroundColor(.white)
+//This is the multiline color
+            ZStack(alignment: .leading) {
+                LinearGradient(
+                    gradient: Gradient(colors: [.green, .yellow, .orange, .red, .purple]),
+                    startPoint: .leading,
+                    endPoint: .trailing
+                )
+                .frame(height: 5)
+                .cornerRadius(3)
+
+                Circle()
+                    .fill(Color.white)
+                    .frame(width: 8, height: 8)
+                    .offset(x: 60)
+            }
+
+            Text("Use sun protection until 5 P.M.")
+                .multilineTextAlignment(.leading)
+                .font(.subheadline)
+                .foregroundColor(.white)
+        }
+        .padding()
+        .background(Color.white.opacity(0.0))
+        .cornerRadius(16)
+      
+    }
+}
+
 
 #Preview {
     WeatherMainView()
