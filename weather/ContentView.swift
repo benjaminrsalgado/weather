@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct WeatherMainView: View {
-    var currentWeather = "sunny" // Change the wheater
+    var currentWeather = "night"
 
     // Type of wheater
     var backgroundGradient: [Color] {
@@ -91,7 +91,7 @@ struct WeatherMainView: View {
                             .foregroundColor(.white)
                             .cornerRadius(10)
                     }
-//This are the views of the next 7 days and 7 hours and the air quality
+//This are all the views:
                     WeatherDetailView()
                     WeeklyForecastView()
                     AirQualityView()
