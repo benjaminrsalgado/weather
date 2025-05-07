@@ -1,96 +1,76 @@
-🌤️ WeatherApp  SwiftUI Clone of Apple Weather App
+<div align="center">
+  <h1>🌤️ WeatherApp</h1>
+  <p><i>A minimalist SwiftUI weather application inspired by Apple's sleek design.</i></p>
+</div>
 
-WeatherApp is a minimalist weather application built in SwiftUI, inspired by the clean and elegant design of the original Apple Weather app. This project aims to replicate the sleek, gradient-based UI while providing a functional and interactive user experience.
+---
 
-📸 Screenshots
+## 🌟 Features
 
-Main View
+* 🏙️ City name and current temperature
+* 📅 7-day weather forecast (mock data)
+* 🕛 Hourly temperature preview (next 7 hours, mock data)
+* 🌬️ Wind map (static image)
+* 🌡️ Feels Like and UV Index (static values)
+* 🗺️ Air Quality Index (static value)
+* 📐 Clean and minimalist UI design
 
-Current temperature display
+---
 
-Hourly and 7-day forecasts
+## 📸 Screenshots
 
-Dynamic background gradients based on weather conditions
+| Main Design                                                                                       | Background Variations                                                                      |
+| ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------ |
+| ![Main Design 1](https://github.com/user-attachments/assets/6bb8fbfd-3218-401f-80cc-0a0ecbc3acb0) | ![Night](https://github.com/user-attachments/assets/0906ab77-0594-402b-b272-8ad745820f00)  |
+| ![Main Design 2](https://github.com/user-attachments/assets/f6d7e52f-6211-424e-8ef9-9e4c89db4ad6) | ![Rainy](https://github.com/user-attachments/assets/635d531c-7ad1-47e1-a334-2adea0af8ee4)  |
+| ![Main Design 3](https://github.com/user-attachments/assets/6a94d45d-db99-4a8e-80d9-a10da57ba008) | ![Cloudy](https://github.com/user-attachments/assets/9091dbfd-9084-4084-baeb-0880caccf25d) |
 
-Details View
+                                                                          
 
-Air Quality Index (AQI)
+---
 
-Wind map visualization
+## 🛠️ Technologies Used
 
-Feels Like and UV Index information
+* **Swift** - Powerful, modern programming language for iOS apps
+* **SwiftUI** - Modern declarative UI framework for building beautiful interfaces
+* **SF Symbols** - High-quality vector icons for weather icons
+* **Custom Gradients** - Smooth background effects to match weather conditions
+* **Static Data** - Placeholder values for demo purposes
 
-(Add the screenshots you provided here once uploaded to the repo)
+> Note: This app is a design prototype and does not use real-time weather data or live location services. All data is static and for visual demonstration only.
 
-✨ Features
+---
 
-Dynamic weather backgrounds
+## 🗺️ Roadmap
 
-Hourly forecast with icons and temperatures
+* [ ] Add real-time weather API integration
+* [ ] Implement custom weather animations
+* [ ] Add localization support
+* [ ] Refine UI for iPad compatibility
+* [ ] Add widgets for Home Screen
 
-7-day weather forecast with min/max temperatures
+---
 
-Air Quality information
-
-Wind map with real-time data
-
-Feels Like and UV Index indicators
-
-🛠️ Technologies Used
-
-SwiftUI for UI design
-
-CoreLocation for location handling
-
-Combine for data handling
-
-SF Symbols for weather icons
-
-Custom gradients for background effects
-
-🚀 Getting Started
-
-Prerequisites
-
-Xcode 15+
-
-iOS 17+
-
-Swift 5.9+
-
-Installation
-
-Clone the repository:
-
-git clone https://github.com/your-username/WeatherApp.git
-
-Open the project:
-
-cd WeatherApp
-open WeatherApp.xcodeproj
-
-Run the project:
-
-Select the desired iPhone simulator (e.g., iPhone 16 Pro)
-
-Click the run button or press Cmd + R
-
-🗺️ Roadmap
-
-
-
-📄 License
+## 📄 License
 
 This project is for personal use and demonstration purposes only. Please do not use or distribute this code without explicit permission. Contact me if you are interested in collaborating or using this project.
 
-📬 Contact
+---
+
+## 📬 Contact
 
 For any questions or collaboration ideas, feel free to reach out:
 
-Bento: benjaminrsalgado
+* Bento: [benjaminrsalgado](https://bento.me/benjaminrsalgado)
 
-⭐️ Show Your Support
+---
+
+## ⭐️ Show Your Support
 
 If you like this project, consider giving it a ⭐️ on GitHub! This helps others find it and motivates me to keep improving it.
 
+---
+
+<div align="center">
 Enjoy the weather! 🌤️
+</div>
